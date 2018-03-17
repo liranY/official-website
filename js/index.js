@@ -62,3 +62,32 @@ if($('.twitter-timeline').length) {
 //   <p style="color:#fff; text-align:left;" class="zl-tweet-title-desktop"><label>'+tweetObject.author_data.name+'</label> <a target="_blank" href="'+tweetObject.author_data.profile_url+'">'+tweetObject.author_data.screen_name+'</a></p>\
 //   <p style="color:#fff; text-align:left">'+tweet+'</p>\
 // </div></div>';
+
+var Youtube = (function () {
+  'use strict';
+
+  var video, results;
+
+  var getThumb = function (url, size) {
+    if (url === null) {
+      return '';
+    }
+    size    = (size === null) ? 'big' : size;
+    results = url.match('[\\?&]v=([^&#]*)');
+    video   = (results === null) ? url : results[1];
+
+    if (size === 'small') {
+      return 'http://img.youtube.com/vi/' + video + '/2.jpg';
+    }
+    return 'http://img.youtube.com/vi/' + video + '/0.jpg';
+  };
+
+  return {
+    thumb: getThumb
+  };
+}());
+
+//Example of usage:
+
+var thumb = Youtube.thumb('https://youtu.be/rX0RrPbvR5Q', 'small');
+

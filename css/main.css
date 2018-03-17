@@ -2470,3 +2470,7 @@ body .carousel-indicators-custom li {
 .header-expanded .our-team-header {
     background-color: #00000061 !important;
 }
+
+.video_row {
+    margin-bottom: 100px;
+}
